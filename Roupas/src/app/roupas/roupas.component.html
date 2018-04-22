@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row" *ngIf="lista; else detalhe">
+    <div class="col-md-4" *ngFor="let roupa of roupas">
+      <div class="jumbotron">
+        <h1 class="display-4">{{ titulo }}</h1>
+        <br>
+        <img class="tamanho" [src]="imagem"> <br><br>
+        <p class="lead">{{ descricao }}</p>
+        <hr class="my-4">
+        <button (click)="MostrarDetalhe()" type="button" class="btn btn-outline-success my-2 my-sm-0">Ver mais</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #detalhe>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron">
+        <h1 class="display-4">{{ titulo }}</h1>
+        <br>
+        <img class="tamanho" [src]="imagem">
+        <br>
+        <p class="lead">Descrição: {{ descricaoCompleta }}</p>        
+        <p class="lead">Valor: R$: {{ preco }},00</p> 
+        <p class="lead">Quantidade:</p>
+        <button (click)="Decrementar()" class="btn btn-info">-</button>       
+        <input type="text" [value]="valor" readonly>
+        <button (click)="Incrementar()" class="btn btn-info">+</button> 
+        <hr class="my-4">        
+        <a (click)="Voltar()" class="btn btn-outline-success my-2 my-sm-0" href="#">Voltar</a>
+        <a (click)="Comprar()" class="btn btn-outline-success my-2 my-sm-0" href="#">Comprar</a>
+      </div>
+    </div>
+  </div>
